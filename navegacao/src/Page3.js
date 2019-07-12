@@ -83,6 +83,7 @@ export default class TodoList extends Component {
                 <Text style={styles.listItem}>
                   {item.text}
                 </Text>
+                <Button title="View" color="black" /*onPress={() => this.deleteTask(index)}*/ />
               </View>
               <View style={styles.hr} />
             </View>}
@@ -125,6 +126,7 @@ const styles = StyleSheet.create({
     width: "100%"
   },
   listItem: {
+    color:"black",
     paddingTop: 2,
     paddingBottom: 2,
     fontSize: 18

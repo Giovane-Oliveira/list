@@ -9,7 +9,7 @@ import {
   Button,
   TextInput,
   Keyboard,
-  Platform
+  Platform,
 } from "react-native";
 
 const isAndroid = Platform.OS == "android";
@@ -20,7 +20,7 @@ export default class TodoList extends Component {
     tasks: [],
     text: ""
   };
-
+//NOMEAR GRUPO
   changeTextHandler = text => {
     this.setState({ text: text });
   };
@@ -34,7 +34,6 @@ export default class TodoList extends Component {
           let { tasks, text } = prevState;
           return {
             tasks: tasks.concat({ key: tasks.length, text: text }),
-            text: ""
           };
         },
         () => Tasks.save(this.state.tasks)
@@ -83,7 +82,7 @@ export default class TodoList extends Component {
                 <Text style={styles.listItem}>
                   {item.text}
                 </Text>
-                <Button title="DEL." onPress={() => this.deleteTask(index)} />
+                <Button title="DEL." color="black" onPress={() => this.deleteTask(index)} />
               </View>
               <View style={styles.hr} />
             </View>}
@@ -96,6 +95,7 @@ export default class TodoList extends Component {
           placeholder="Add novo grupo"
           returnKeyType="done"
           returnKeyLabel="done"
+          placeholderTextColor="black"
         />
       </View>
     );
@@ -134,6 +134,7 @@ const styles = StyleSheet.create({
     width: "100%"
   },
   listItem: {
+    color:"black",
     paddingTop: 2,
     paddingBottom: 2,
     fontSize: 18

@@ -3,11 +3,10 @@
 import React from 'react';
 import { View, Button, StyleSheet, AppRegistry, Image } from 'react-native';
 
-
 const Page1 = ({ navigation }) => (
   <View style={style.container}>
         <View>
-        <Image  style={{bottom: 100}}
+        <Image  style={{bottom: 100,}}
           source={require('./logo.png')}
         />
       </View>
@@ -19,14 +18,14 @@ const Page1 = ({ navigation }) => (
           color='black'
         />
       </View>
-      <View style={style.h}>
+      <View style={style.n}>
         <Button
           title="HISTÓRICO"
           onPress={() => navigation.navigate('Historico')}
           color='black'
         />
       </View>
-      <View style={style.f}>
+      <View style={style.n}>
         <Button
           title="GRUPOS"
           onPress={() => navigation.navigate('Grupos')}
@@ -37,9 +36,6 @@ const Page1 = ({ navigation }) => (
   </View>
 );
 
-Page1.navigationOptions = {
-  title: 'LIST.IT',
-}
 
 const style = StyleSheet.create({
   container: {
@@ -57,14 +53,11 @@ const style = StyleSheet.create({
   },
   n: {
     marginBottom: 20,
-
-  },
-  h: {
-    marginBottom: 20,
-  },
-  f: {
-    marginBottom: 20,
   },
 });
+
+Page1.navigationOptions = {
+  title: 'Home',
+}
 
 export default Page1;

@@ -12,6 +12,24 @@ import {
   Platform
 } from "react-native";
 
+
+
+/*const Page2 = ({ navigation }) => (
+  <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+    <Text>Home ;D</Text>
+    <Button 
+      title="Ir para About"
+      onPress={() => navigation.navigate('About') }
+    />
+  </View>
+);
+
+Page2.navigationOptions = {
+  title: 'Home',
+}
+
+export default Page2;*/
+
 const isAndroid = Platform.OS == "android";
 const viewPadding = 10;
 
@@ -26,6 +44,7 @@ export default class TodoList extends Component {
   };
 
   addTask = () => {
+
     let notEmpty = this.state.text.trim().length > 0;
 
     if (notEmpty) {
@@ -40,19 +59,6 @@ export default class TodoList extends Component {
         () => Tasks.save(this.state.tasks)
       );
     }
-  };
-
-  deleteTask = i => {
-    this.setState(
-      prevState => {
-        let tasks = prevState.tasks.slice();
-
-        tasks.splice(i, 1);
-
-        return { tasks: tasks };
-      },
-      () => Tasks.save(this.state.tasks)
-    );
   };
 
   componentDidMount() {
@@ -83,20 +89,12 @@ export default class TodoList extends Component {
                 <Text style={styles.listItem}>
                   {item.text}
                 </Text>
-                <Button title="ADD." onPress={() => this.addTask(index)} />
+                <Button title="ADD." color="black"  onPress={() => navigation.navigate('Historico')} />
               </View>
               <View style={styles.hr} />
             </View>}
         />
-        <TextInput
-          style={styles.textInput}
-          onChangeText={this.changeTextHandler}
-          onSubmitEditing={this.addTask}
-          value={this.state.text}
-          placeholder="Add novo item"
-          returnKeyType="done"
-          returnKeyLabel="done"
-        />
+  
       </View>
     );
   }
@@ -134,6 +132,7 @@ const styles = StyleSheet.create({
     width: "100%"
   },
   listItem: {
+    color:"black",
     paddingTop: 2,
     paddingBottom: 2,
     fontSize: 18
