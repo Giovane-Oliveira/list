@@ -1,7 +1,7 @@
 // src/Page1.js
 
 import React from 'react';
-import { View, Button, StyleSheet, AppRegistry, Image } from 'react-native';
+import { View, Button, StyleSheet,  Image } from 'react-native';
 
 const Page1 = ({ navigation }) => (
   <View style={style.container}>
@@ -20,7 +20,7 @@ const Page1 = ({ navigation }) => (
       </View>
       <View style={style.n}>
         <Button
-          title="HISTÓRICO"
+          title="Listas"
           onPress={() => navigation.navigate('Historico')}
           color='black'
         />

@@ -1,3 +1,4 @@
+
 import React, { Component } from "react";
 import {
   AppRegistry,
@@ -83,7 +84,7 @@ export default class TodoList extends Component {
                 <Text style={styles.listItem}>
                   {item.text}
                 </Text>
-                <Button title="View" color="black" /*onPress={() => this.deleteTask(index)}*/ />
+                <Button title="View" color="black" onPress={() => this.props.navigation.navigate('View') } />
               </View>
               <View style={styles.hr} />
             </View>}

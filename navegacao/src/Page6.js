@@ -1,3 +1,4 @@
+
 import React, { Component } from "react";
 import {
   AppRegistry,
@@ -7,36 +8,18 @@ import {
   FlatList,
   AsyncStorage,
   Button,
+  TextInput,
   Keyboard,
-  Platform,
+  Platform
 } from "react-native";
-
-/*const Page2 = ({ navigation }) => (
-  <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-    <Text>Home ;D</Text>
-    <Button 
-      title="Ir para About"
-      onPress={() => navigation.navigate('About') }
-    />
-  </View>
-);
-
-Page2.navigationOptions = {
-  title: 'Home',
-}
-
-export default Page2;*/
 
 const isAndroid = Platform.OS == "android";
 const viewPadding = 10;
 
-
-
 export default class TodoList extends Component {
   state = {
     tasks: [],
-    text: "",
- 
+    text: ""
   };
 
   changeTextHandler = text => {
@@ -44,7 +27,6 @@ export default class TodoList extends Component {
   };
 
   addTask = () => {
-
     let notEmpty = this.state.text.trim().length > 0;
 
     if (notEmpty) {
@@ -59,6 +41,19 @@ export default class TodoList extends Component {
         () => Tasks.save(this.state.tasks)
       );
     }
+  };
+
+  deleteTask = i => {
+    this.setState(
+      prevState => {
+        let tasks = prevState.tasks.slice();
+
+        tasks.splice(i, 1);
+
+        return { tasks: tasks };
+      },
+      () => Tasks.save(this.state.tasks)
+    );
   };
 
   componentDidMount() {
@@ -89,13 +84,11 @@ export default class TodoList extends Component {
                 <Text style={styles.listItem}>
                   {item.text}
                 </Text>
-                <Button title="ADD." color="black"  onPress={() => this.props.navigation.navigate('Lista')} />
-                
               </View>
               <View style={styles.hr} />
             </View>}
         />
-
+     
       </View>
     );
   }
@@ -111,12 +104,12 @@ let Tasks = {
     return tasks.map(task => task.text).join("||");
   },
   all(callback) {
-    return AsyncStorage.getItem("TASKS", (err, tasks) =>
+    return AsyncStorage.getItem("Lista", (err, tasks) =>
       this.convertToArrayOfObject(tasks, callback)
     );
   },
   save(tasks) {
-    AsyncStorage.setItem("TASKS", this.convertToStringWithSeparators(tasks));
+    AsyncStorage.setItem("Lista", this.convertToStringWithSeparators(tasks));
   }
 };
 
@@ -127,12 +120,10 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: "#F5FCFF",
     padding: viewPadding,
-    paddingTop: 20, 
-   
+    paddingTop: 20
   },
   list: {
-    width: "100%",
-    
+    width: "100%"
   },
   listItem: {
     color:"black",
@@ -142,8 +133,7 @@ const styles = StyleSheet.create({
   },
   hr: {
     height: 1,
-    backgroundColor: "gray",
-    
+    backgroundColor: "gray"
   },
   listItemCont: {
     flexDirection: "row",
@@ -160,4 +150,3 @@ const styles = StyleSheet.create({
   }
 });
 AppRegistry.registerComponent("TodoList", () => TodoList);
-
